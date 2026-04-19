@@ -1,0 +1,67 @@
+<section class="auth-page">
+  <div class="auth-card">
+    <div class="auth-header">
+      <p class="auth-badge">Bienvenido de nuevo</p>
+      <h2>Iniciar Sesión</h2>
+      <p class="auth-subtitle">
+        Accede a tu cuenta para explorar el catálogo de películas.
+      </p>
+    </div>
+
+    <form class="auth-form" [formGroup]="formLogin" (ngSubmit)="iniciarSesion()">
+      
+      <!-- USUARIO -->
+      <div class="grupo">
+        <label for="usuario">Usuario</label>
+        <div class="input-wrap">
+          <span class="icono">👤</span>
+          <input
+            id="usuario"
+            type="text"
+            formControlName="usuarioLogin"
+            placeholder="Ingrese su usuario"
+          />
+        </div>
+
+        @if (formLogin.get('usuarioLogin')?.invalid && formLogin.get('usuarioLogin')?.touched) {
+          <small class="error-texto">El usuario es obligatorio</small>
+        }
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="grupo">
+        <label for="password">Contraseña</label>
+        <div class="input-wrap">
+          <span class="icono">🔒</span>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="Ingrese su contraseña"
+          />
+        </div>
+
+        @if (formLogin.get('password')?.invalid && formLogin.get('password')?.touched) {
+          <small class="error-texto">La contraseña es obligatoria</small>
+        }
+      </div>
+
+      <!-- ERROR -->
+      @if (mensajeError) {
+        <div class="mensaje-error">
+          {{ mensajeError }}
+        </div>
+      }
+
+      <!-- BOTÓN -->
+      <button type="submit" [disabled]="cargando">
+        {{ cargando ? 'Ingresando...' : 'Ingresar' }}
+      </button>
+    </form>
+
+    <p class="auth-footer">
+      ¿No tienes cuenta?
+      <a routerLink="/registro">Regístrate ahora</a>
+    </p>
+  </div>
+</section>

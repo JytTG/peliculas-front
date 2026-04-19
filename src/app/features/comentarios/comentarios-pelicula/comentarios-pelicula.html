@@ -1,0 +1,78 @@
+<section class="comentarios-page">
+  <div class="comentarios-card">
+
+    <div class="comentarios-header">
+      <div>
+        <h3>Comentarios</h3>
+        <p class="comentarios-subtitle">
+          Agrega y visualiza opiniones de los usuarios sobre esta película.
+        </p>
+      </div>
+    </div>
+
+    <form class="form-comentario" [formGroup]="formComentario" (ngSubmit)="guardarComentario()">
+      <div class="campo">
+        <label for="textoComentario">Escribe tu comentario</label>
+        <textarea
+          id="textoComentario"
+          rows="4"
+          formControlName="texto"
+          placeholder="Comparte tu opinión sobre esta película..."
+        ></textarea>
+
+        @if (formComentario.get('texto')?.invalid && formComentario.get('texto')?.touched) {
+          <small class="error-texto">El comentario es obligatorio</small>
+        }
+      </div>
+
+      <div class="acciones-form">
+        <button type="submit" class="btn-guardar" [disabled]="guardando">
+          {{ guardando ? 'Guardando...' : 'Publicar comentario' }}
+        </button>
+      </div>
+    </form>
+
+    <div class="listado-comentarios">
+
+      @if (cargando) {
+        <p class="mensaje-info">Cargando comentarios...</p>
+      }
+
+      @else if (comentarios.length === 0) {
+        <div class="comentarios-vacio">
+          <p>Aún no hay comentarios para esta película.</p>
+          <span>Sé el primero en opinar.</span>
+        </div>
+      }
+
+      @else {
+        @for (comentario of comentarios; track comentario.id) {
+          <div class="comentario-item">
+
+            <div class="comentario-top">
+              <div class="comentario-usuario">
+
+                <div class="avatar">
+                  {{ comentario.usuarioLogin.charAt(0).toUpperCase() }}
+                </div>
+
+                <div class="usuario-meta">
+                  <span class="usuario">{{ comentario.usuarioLogin }}</span>
+                  <span class="fecha">
+                    {{ comentario.fechaCreacion | date: 'dd/MM/yyyy HH:mm' }}
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+            <p class="texto">{{ comentario.texto }}</p>
+
+          </div>
+        }
+      }
+
+    </div>
+
+  </div>
+</section>  

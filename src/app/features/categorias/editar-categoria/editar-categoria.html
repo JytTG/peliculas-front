@@ -1,0 +1,51 @@
+<section class="categorias-page">
+  <div class="categorias-card">
+
+    <div class="categorias-header">
+      <div>
+        <p class="categorias-badge">MÓDULO CATEGORÍAS</p>
+        <h2>Editar Categoría</h2>
+        <p class="categorias-subtitle">
+          Actualiza la información de la categoría seleccionada.
+        </p>
+      </div>
+    </div>
+
+    <form class="form-categoria" [formGroup]="formCategoria" (ngSubmit)="actualizarCategoria()">
+
+      <div class="campo">
+        <label>Nombre</label>
+        <input type="text" formControlName="nombre" />
+
+        @if (formCategoria.get('nombre')?.invalid && formCategoria.get('nombre')?.touched) {
+          <small class="error-texto">El nombre es obligatorio</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Descripción</label>
+        <input type="text" formControlName="descripcion" />
+
+        @if (formCategoria.get('descripcion')?.invalid && formCategoria.get('descripcion')?.touched) {
+          <small class="error-texto">La descripción es obligatoria</small>
+        }
+      </div>
+
+      @if (mensajeError) {
+        <div class="mensaje-error">
+          {{ mensajeError }}
+        </div>
+      }
+
+      <div class="acciones-form">
+        <button type="submit" class="btn-guardar" [disabled]="cargando">
+          {{ cargando ? 'Actualizando...' : 'Actualizar categoría' }}
+        </button>
+
+        <a routerLink="/categorias" class="btn-cancelar">Cancelar</a>
+      </div>
+
+    </form>
+
+  </div>
+</section>

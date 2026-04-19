@@ -1,0 +1,237 @@
+.comentarios-page {
+  margin-top: 2rem;
+}
+
+.comentarios-card {
+  background: rgba(10, 10, 15, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.comentarios-header {
+  margin-bottom: 1.5rem;
+}
+
+.comentarios-header h3 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.comentarios-subtitle {
+  margin-top: 0.45rem;
+  margin-bottom: 0;
+  color: #b8bfd0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.form-comentario {
+  margin-bottom: 2rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.campo label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+.campo textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(17, 24, 39, 0.75);
+  color: #ffffff;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-sizing: border-box;
+}
+
+.campo textarea::placeholder {
+  color: #8f96a8;
+}
+
+.campo textarea:focus {
+  border-color: rgba(229, 9, 20, 0.8);
+  box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.12);
+  background: rgba(17, 24, 39, 0.92);
+}
+
+.error-texto {
+  color: #f87171;
+  font-size: 0.85rem;
+  margin-top: -0.15rem;
+}
+
+.acciones-form {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-guardar {
+  border: none;
+  border-radius: 14px;
+  padding: 0.9rem 1.35rem;
+  background: linear-gradient(135deg, #e50914, #b20710);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+  box-shadow: 0 10px 24px rgba(229, 9, 20, 0.28);
+}
+
+.btn-guardar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(229, 9, 20, 0.32);
+}
+
+.btn-guardar:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.listado-comentarios {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mensaje-info {
+  margin: 0;
+  color: #c7cedd;
+  font-size: 0.96rem;
+}
+
+.comentarios-vacio {
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 18px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.comentarios-vacio p {
+  margin: 0;
+  color: #f3f4f6;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.comentarios-vacio span {
+  display: inline-block;
+  margin-top: 0.45rem;
+  color: #9ca3af;
+  font-size: 0.92rem;
+}
+
+.comentario-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.comentario-item:hover {
+  transform: translateY(-1px);
+  border-color: rgba(229, 9, 20, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.comentario-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.comentario-usuario {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e50914, #7f1d1d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 8px 18px rgba(229, 9, 20, 0.22);
+}
+
+.usuario-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.usuario {
+  color: #ffffff;
+  font-size: 0.96rem;
+  font-weight: 700;
+}
+
+.fecha {
+  color: #9ca3af;
+  font-size: 0.82rem;
+}
+
+.texto {
+  margin: 0.95rem 0 0 0;
+  color: #e5e7eb;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .comentarios-card {
+    padding: 1.25rem;
+    border-radius: 20px;
+  }
+
+  .comentarios-header h3 {
+    font-size: 1.4rem;
+  }
+
+  .campo textarea {
+    min-height: 110px;
+  }
+
+  .btn-guardar {
+    width: 100%;
+  }
+
+  .acciones-form {
+    justify-content: stretch;
+  }
+}

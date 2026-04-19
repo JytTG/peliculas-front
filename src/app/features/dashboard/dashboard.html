@@ -1,0 +1,94 @@
+<section class="dashboard-page">
+  <div class="dashboard-container">
+
+    <section class="hero-panel">
+      <div class="hero-content">
+        <p class="dashboard-badge">Panel principal</p>
+        <h1>Bienvenido a PeliFlix</h1>
+        <p class="dashboard-subtitle">
+          Administra categorías, películas y comentarios desde un solo lugar con una vista más visual del catálogo.
+        </p>
+
+        <div class="hero-actions">
+          <a routerLink="/peliculas" class="btn-primary">Ver películas</a>
+          <a routerLink="/categorias" class="btn-secondary">Gestionar categorías</a>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-label">Películas visibles</span>
+          <strong>{{ peliculasDestacadas.length }}</strong>
+          <small>Top 5 del catálogo</small>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-label">Módulos</span>
+          <strong>3</strong>
+          <small>Dashboard, categorías y películas</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="accesos-grid">
+      <a routerLink="/categorias" class="acceso-card">
+        <div class="acceso-icon">📂</div>
+        <div>
+          <h3>Categorías</h3>
+          <p>Gestiona las categorías del sistema y organiza mejor tu catálogo.</p>
+        </div>
+      </a>
+
+      <a routerLink="/peliculas" class="acceso-card">
+        <div class="acceso-icon">🎬</div>
+        <div>
+          <h3>Películas</h3>
+          <p>Administra títulos, ediciones, comentarios y toda la cartelera.</p>
+        </div>
+      </a>
+    </section>
+
+    <section class="cartelera-section">
+      <div class="section-header">
+        <p class="section-badge">Cartelera destacada</p>
+        <h2>Top 5 películas 2026</h2>
+      </div>
+
+      @if (cargandoPeliculas) {
+        <div class="estado-vacio">
+          <p>Cargando cartelera...</p>
+        </div>
+      } @else {
+
+        @if (peliculasDestacadas.length === 0) {
+          <div class="estado-vacio">
+            <p>No hay películas registradas todavía.</p>
+            <span>Cuando agregues películas, aquí se mostrarán como cartelera.</span>
+          </div>
+        } @else {
+
+          <div class="cartelera-grid">
+            @for (pelicula of peliculasDestacadas; track pelicula.id) {
+              <a [routerLink]="['/peliculas/editar', pelicula.id]" class="poster-card">
+
+                <div class="poster-image-wrap">
+                  <img [src]="pelicula.posterUrl" [alt]="pelicula.titulo" class="poster-image" />
+                </div>
+
+                <div class="poster-info">
+                  <h3>{{ pelicula.titulo }}</h3>
+                  <p>{{ pelicula.categoriaNombre || 'Sin categoría' }}</p>
+                  <span>Año {{ pelicula.anio }}</span>
+                </div>
+
+              </a>
+            }
+          </div>
+
+        }
+
+      }
+    </section>
+
+  </div>
+</section>

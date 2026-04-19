@@ -1,0 +1,49 @@
+<section class="categorias-page">
+  <div class="categorias-card">
+
+    <div class="categorias-header">
+      <div>
+        <p class="categorias-badge">MÓDULO CATEGORÍAS</p>
+        <h2>Crear Categoría</h2>
+        <p class="categorias-subtitle">
+          Registra una nueva categoría en el sistema.
+        </p>
+      </div>
+    </div>
+
+    <form class="form-categoria" [formGroup]="formCategoria" (ngSubmit)="guardarCategoria()">
+
+      <div class="campo">
+        <label>Nombre</label>
+        <input type="text" formControlName="nombre" placeholder="Ingrese el nombre" />
+
+        @if (formCategoria.get('nombre')?.invalid && formCategoria.get('nombre')?.touched) {
+          <small class="error-texto">El nombre es obligatorio</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Descripción</label>
+        <input type="text" formControlName="descripcion" placeholder="Ingrese la descripción" />
+
+        @if (formCategoria.get('descripcion')?.invalid && formCategoria.get('descripcion')?.touched) {
+          <small class="error-texto">La descripción es obligatoria</small>
+        }
+      </div>
+
+      @if (mensajeError) {
+        <div class="mensaje-error">
+          {{ mensajeError }}
+        </div>
+      }
+
+      <div class="acciones-form">
+        <button type="submit" class="btn-guardar" [disabled]="cargando">
+          {{ cargando ? 'Guardando...' : 'Guardar categoria' }}
+        </button>
+        <a routerLink="/categorias" class="btn-cancelar">Cancelar</a>
+      </div>
+
+    </form>
+  </div>
+</section>

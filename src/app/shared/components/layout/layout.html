@@ -1,0 +1,31 @@
+<div class="layout-container">
+  <header class="header">
+    <div class="brand">
+      <span class="brand-mark">●</span>
+      <h1>PeliFlix</h1>
+    </div>
+    
+    <nav>
+      @if (!authService.estaAutenticado()) {
+        <a routerLink="/login" routerLinkActive="activo">Login</a>
+        <a routerLink="/registro" routerLinkActive="activo" >Registro</a>
+      }
+
+      @if (authService.estaAutenticado()) {
+        <a routerLink="/dashboard" routerLinkActive="activo">Dashboard</a>
+        <a routerLink="/categorias" routerLinkActive="activo">Categorías</a>
+        <a routerLink="/peliculas" routerLinkActive="activo">Películas</a>
+        <a href="javascript:void(0)" (click)="cerrarSesion()">Cerrar sesión</a>
+      }
+    </nav>
+  </header>
+
+  <main class="contenido">
+    <div class="bg-overlay"></div>
+    <div class="bg-glow bg-glow-left"></div>
+    <div class="bg-glow bg-glow-right"></div>
+    <div class="bg-grid"></div>
+
+    <router-outlet></router-outlet>
+  </main>
+</div>

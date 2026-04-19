@@ -1,0 +1,55 @@
+<section class="categorias-page">
+  <div class="categorias-card">
+    <div class="categorias-header">
+      <div>
+        <p class="categorias-badge">Módulo Categorías</p>
+        <h2>Listado de Categorías</h2>
+        <p class="categorias-subtitle">
+          Administra las categorías registradas en el sistema.
+        </p>
+      </div>
+
+      <a routerLink="/categorias/crear" class="btn-crear">+ Nueva categoría</a>
+    </div>
+
+    @if (mensajeError) {
+      <div class="mensaje-error">
+        {{ mensajeError }}
+      </div>
+    }
+
+    @if (cargando) {
+      <p class="mensaje-info">Cargando categorías...</p>
+    } @else {
+      @if (categorias.length === 0) {
+        <p class="mensaje-info">No hay categorías registradas.</p>
+      } @else {
+        <div class="tabla-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (categoria of categorias; track categoria.id) {
+                <tr>
+                  <td>{{ categoria.id }}</td>
+                  <td>{{ categoria.nombre }}</td>
+                  <td>{{ categoria.descripcion }}</td>
+                  <td class="acciones">
+                    <button class="btn-editar" (click)="editarCategoria(categoria.id)">Editar</button>
+                    <button class="btn-eliminar" (click)="eliminarCategoria(categoria.id)">Eliminar</button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    }
+  </div>
+</section>

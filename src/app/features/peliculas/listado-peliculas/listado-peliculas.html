@@ -1,0 +1,44 @@
+<section class="peliculas-page">
+  <div class="peliculas-card">
+
+    <div class="peliculas-header">
+      <div>
+        <p class="peliculas-badge">MÓDULO PELÍCULAS</p>
+        <h2>Listado de Películas</h2>
+        <p class="peliculas-subtitle">
+          Administra las películas registradas en el sistema.
+        </p>
+      </div>
+
+      <a routerLink="/peliculas/crear" class="btn-crear">+ Nueva película</a>
+    </div>
+    
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (p of peliculas; track p.id) {
+            <tr>
+              <td>{{ p.id }}</td>
+              <td>{{ p.titulo }}</td>
+              <td>{{ p.categoriaNombre }}</td>
+              <td class="acciones">
+                <button class="btn-editar" (click)="editar(p.id)">Editar</button>
+                <button class="btn-eliminar" (click)="eliminar(p.id)">Eliminar</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>

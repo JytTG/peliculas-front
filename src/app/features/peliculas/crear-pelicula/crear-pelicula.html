@@ -1,0 +1,64 @@
+<section class="peliculas-page">
+  <div class="peliculas-card">
+
+    <div class="peliculas-header">
+      <div>
+        <p class="peliculas-badge">MÓDULO PELÍCULAS</p>
+        <h2>Crear Película</h2>
+        <p class="peliculas-subtitle">
+          Registra una nueva película en el sistema.
+        </p>
+      </div>
+    </div>
+
+    <form class="form-pelicula" [formGroup]="form" (ngSubmit)="guardar()">
+      
+      <div class="campo">
+        <label>Título</label>
+        <input type="text" formControlName="titulo" placeholder="Ingrese el título" />
+        @if (form.get('titulo')?.invalid && form.get('titulo')?.touched) {
+          <small class="error-texto">El título es obligatorio</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Sinopsis</label>
+        <input type="text" formControlName="sinopsis" placeholder="Ingrese la sinopsis" />
+        @if (form.get('sinopsis')?.invalid && form.get('sinopsis')?.touched) {
+          <small class="error-texto">La sinopsis es obligatoria</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Año</label>
+        <input type="number" formControlName="anio" placeholder="Ingrese el año" />
+        @if (form.get('anio')?.invalid && form.get('anio')?.touched) {
+          <small class="error-texto">El año es obligatorio y debe ser válido</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Categoría</label>
+        <select formControlName="categoriaId">
+          <option [ngValue]="null">Seleccione categoría</option>
+          @for (c of categorias; track c.id) {
+            <option [ngValue]="c.id">{{ c.nombre }}</option>
+          }
+        </select>
+        @if (form.get('categoriaId')?.invalid && form.get('categoriaId')?.touched) {
+          <small class="error-texto">Seleccione una categoría</small>
+        }
+      </div>
+
+      <div class="acciones-form">
+        <button type="submit" class="btn-guardar" [disabled]="cargando">
+          {{ cargando ? 'Guardando...' : 'Guardar película' }}
+        </button>
+
+        <a routerLink="/peliculas" class="btn-cancelar">Cancelar</a>
+      </div>
+
+    </form>
+    
+  </div>
+</section>
